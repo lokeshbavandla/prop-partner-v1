@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Self-contained reveal-on-scroll. Lives in <head> so it can't be broken by
+     any other script. Sets .js (so content is visible if JS is disabled),
+     then reveals .reveal elements as they enter the viewport. */
+  (function (d) {
+    d.documentElement.classList.add('js');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function run() {
+      var els = d.querySelectorAll('.reveal:not(.in)'), vh = window.innerHeight, i;
+      for (i = 0; i < els.length; i++) {
+        var r = els[i].getBoundingClientRect();
+        if (r.top < vh * 0.9 && r.bottom > 0) els[i].classList.add('in');
+      }
+    }
+    function start() {
+      if (reduce) {
+        var all = d.querySelectorAll('.reveal'), i;
+        for (i = 0; i < all.length; i++) all[i].classList.add('in');
+        return;
+      }
+      run();
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(function () { run(); ticking = false; }); }
+      }, { passive: true });
+      window.addEventListener('resize', run, { passive: true });
+      window.addEventListener('load', run);
+    }
+    if (d.readyState !== 'loading') start();
+    else d.addEventListener('DOMContentLoaded', start);
+  })(document);
+  </script>
+  <title>Services — The Eight-Stage Project Lifecycle | The Prop Partner</title>
+  <meta name="description" content="One integrated system from ideation to handover: Strategy &amp; Planning, Marketing &amp; Branding, Sales Acceleration, and CRM &amp; Post-Sales — eight stages, one accountable partner.">
+  <link rel="canonical" href="https://www.thepropartner.in/services.html">
+
+  <!-- Open Graph / social (first impression in WhatsApp & pitch emails) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Prop Partner">
+  <meta property="og:title" content="Services — The Eight-Stage Project Lifecycle | The Prop Partner">
+  <meta property="og:description" content="One integrated system from ideation to handover: Strategy &amp; Planning, Marketing &amp; Branding, Sales Acceleration, and CRM &amp; Post-Sales — eight stages, one accountable partner.">
+  <meta property="og:image" content="https://www.thepropartner.in/assets/img/og-default.jpg">
+  <meta property="og:url" content="https://www.thepropartner.in/services.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Services — The Eight-Stage Project Lifecycle | The Prop Partner">
+  <meta name="twitter:description" content="One integrated system from ideation to handover: Strategy &amp; Planning, Marketing &amp; Branding, Sales Acceleration, and CRM &amp; Post-Sales — eight stages, one accountable partner.">
+  <meta name="twitter:image" content="https://www.thepropartner.in/assets/img/og-default.jpg">
+  <meta name="theme-color" content="#0E2522">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"The Prop Partner",
+"description":"Real estate advisory, mandate sales and project lifecycle management for developers across Hyderabad and Bangalore.",
+"url":"https://www.thepropartner.in","areaServed":["Hyderabad","Bangalore"],
+"slogan":"One Partner. Every Stage of Project Success.","email":"hello@thepropartner.in","telephone":"+91-97969-64545"}
+</script>
+</head>
+<body data-page="services">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <a href="#main" class="btn btn--primary" style="position:absolute;left:-9999px;top:8px;z-index:100" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to content</a>
+  <header class="site-header">
+    <div class="container container--wide nav">
+      <a href="/" class="brand" aria-label="The Prop Partner — home">
+        <img src="/assets/img/logo-prop-partner.png" alt="The Prop Partner" width="170" height="44">
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__link" data-nav="about" href="/about.html">About</a>
+        <span class="has-menu">
+          <a class="nav__link" data-nav="services" href="/services.html">Services</a>
+          <span class="menu" role="menu">
+            <a href="/services/strategy-planning.html"><span class="m-title">Strategy &amp; Planning</span><span class="m-sub">Research · product · pricing</span></a>
+            <a href="/services/marketing-branding.html"><span class="m-title">Marketing &amp; Branding</span><span class="m-sub">Identity · demand generation</span></a>
+            <a href="/services/sales-acceleration.html"><span class="m-title">Sales Acceleration</span><span class="m-sub">Mandate sales · channel partners</span></a>
+            <a href="/services/crm-post-sales.html"><span class="m-title">CRM &amp; Post-Sales</span><span class="m-sub">Customer journey · handover</span></a>
+          </span>
+        </span>
+        <a class="nav__link" data-nav="portfolio" href="/portfolio.html">Portfolio</a>
+        <a class="nav__link" data-nav="insights" href="/insights.html">Insights</a>
+        <a class="nav__link" data-nav="contact" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost" href="/careers.html">Careers</a>
+        <a class="btn btn--primary" href="/contact.html">Book a Consultation</a>
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/about.html">About</a>
+    <details>
+      <summary><a href="/services.html" style="border:0;padding:0">Services</a></summary>
+      <div class="sub">
+        <a href="/services/strategy-planning.html">Strategy &amp; Planning</a>
+        <a href="/services/marketing-branding.html">Marketing &amp; Branding</a>
+        <a href="/services/sales-acceleration.html">Sales Acceleration</a>
+        <a href="/services/crm-post-sales.html">CRM &amp; Post-Sales</a>
+      </div>
+    </details>
+    <a href="/portfolio.html">Portfolio</a>
+    <a href="/insights.html">Insights</a>
+    <a href="/careers.html">Careers</a>
+    <a href="/contact.html">Contact</a>
+    <a class="btn btn--primary" style="margin-top:24px;width:100%" href="/contact.html">Book a Consultation</a>
+  </div>
+
+  <main id="main">
+
+  <section class="page-head">
+    <div class="container container--wide">
+      <nav class="crumbs"><a href="/">Home</a><span>/</span>Services</nav>
+      <span class="eyebrow mt-3" style="display:inline-flex">End-to-end, by design</span>
+      <h1 class="reveal">Eight stages. Four pillars. One accountable partner.</h1>
+      <p class="lead reveal mt-3">Successful projects aren't built by marketing alone. They're built through the seamless integration of market intelligence, product planning, branding, sales, customer experience and execution — owned end to end.</p>
+    </div>
+  </section>
+
+  <!-- lifecycle overview: 8 stages under 4 pillars -->
+  <section class="section--tight">
+    <div class="container container--wide">
+      <div class="journey reveal">
+        <div class="jstage">
+          <div class="jstage__p">01 · Strategy &amp; Planning</div>
+          <div class="jstage__items"><span>Project ideation &amp; market research</span><span>Product strategy &amp; planning</span></div>
+        </div>
+        <div class="jstage">
+          <div class="jstage__p">02 · Marketing &amp; Branding</div>
+          <div class="jstage__items"><span>Branding &amp; identity development</span><span>Marketing &amp; demand generation</span></div>
+        </div>
+        <div class="jstage">
+          <div class="jstage__p">03 · Sales Acceleration</div>
+          <div class="jstage__items"><span>Mandate sales &amp; distribution</span><span>Channel partner management</span></div>
+        </div>
+        <div class="jstage">
+          <div class="jstage__p">04 · CRM &amp; Post-Sales</div>
+          <div class="jstage__items"><span>CRM &amp; customer experience</span><span>Possession &amp; handover</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 pillar cards -->
+  <section class="section">
+    <div class="container container--wide">
+      <div class="split" style="margin-bottom:48px">
+        <div class="split__label"><span class="eyebrow">The four pillars</span></div>
+        <div><h2 class="reveal" style="max-width:36ch">Engage the whole lifecycle, or the stage where you need depth.</h2></div>
+      </div>
+      <div class="pillar-cards">
+        <a class="pcard reveal" href="/services/strategy-planning.html">
+          <span class="pcard__n">PILLAR 01</span>
+          <h3>Strategy &amp; Planning</h3>
+          <p class="muted">We get the project right before it reaches the market — understanding demand, competition and the buyer, then shaping product and price around it.</p>
+          <span class="pcard__stages">Stages 01–02 · Ideation &amp; research, product strategy &nbsp;→</span>
+        </a>
+        <a class="pcard reveal" data-d="1" href="/services/marketing-branding.html">
+          <span class="pcard__n">PILLAR 02</span>
+          <h3>Marketing &amp; Branding</h3>
+          <p class="muted">A brand that stands out and a demand engine that brings qualified buyers — from identity and naming to performance, NRI and PR campaigns.</p>
+          <span class="pcard__stages">Stages 03–04 · Branding, demand generation &nbsp;→</span>
+        </a>
+        <a class="pcard reveal" href="/services/sales-acceleration.html">
+          <span class="pcard__n">PILLAR 03</span>
+          <h3>Sales Acceleration</h3>
+          <p class="muted">Structured sales execution and a strong distribution ecosystem — exclusive mandates, site-visit management, closures and a managed channel network.</p>
+          <span class="pcard__stages">Stages 05–06 · Mandate sales, channel partners &nbsp;→</span>
+        </a>
+        <a class="pcard reveal" data-d="1" href="/services/crm-post-sales.html">
+          <span class="pcard__n">PILLAR 04</span>
+          <h3>CRM &amp; Post-Sales</h3>
+          <p class="muted">The customer journey from enquiry to registration — and through to a confident possession, handover and an active referral community.</p>
+          <span class="pcard__stages">Stages 07–08 · CRM, possession &amp; handover &nbsp;→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How an engagement works -->
+  <section class="section panel">
+    <div class="container container--wide">
+      <div class="split" style="margin-bottom:48px">
+        <div class="split__label"><span class="eyebrow">How it works</span></div>
+        <div><h2 class="reveal" style="max-width:28ch">A clear, low-friction way in.</h2>
+        <p class="lead reveal mt-2">Engage us for the full lifecycle or a single stage. Either way, the path to starting is the same.</p></div>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><span class="step__n num">01</span><h4>Consultation</h4><p>We understand your project, its stage, and the outcome you're after.</p></div>
+        <div class="step"><span class="step__n num">02</span><h4>Mandate &amp; scope</h4><p>We agree the scope — full lifecycle or selected stages — and how success is measured.</p></div>
+        <div class="step"><span class="step__n num">03</span><h4>Execution</h4><p>One accountable team runs the work, with a single point of contact.</p></div>
+        <div class="step"><span class="step__n num">04</span><h4>Reporting &amp; reviews</h4><p>Regular, measurable reviews against the numbers that matter to you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- payoff -->
+  <section class="section bleed">
+    <div class="container container--wide split">
+      <div class="split__label"><span class="eyebrow" style="color:var(--teal)">The payoff</span></div>
+      <div class="duo">
+        <div>
+          <h2 class="reveal" style="max-width:38ch">When one partner owns all eight stages, accountability stops leaking.</h2>
+          <p class="lead reveal mt-3" style="color:var(--on-dark-mut)">Consistency from concept to completion. One team that owns the brand, the buyer experience and the revenue number — and reports against it.</p>
+          <a class="btn btn--on-dark mt-4 reveal" href="/contact.html">Discuss your project <span class="arr">→</span></a>
+        </div>
+        <aside class="proofs reveal" data-d="1">
+          <span class="proofs__k">What you get</span>
+          <ul>
+            <li>One team owns the brand, experience &amp; revenue</li>
+            <li>Consistency from concept to completion</li>
+            <li>Reported against the number, every step</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <p class="footer-motif">One Partner.<br><span class="accent">Every stage</span> of project success.</p>
+
+      <nav class="footer-disc" aria-label="Disciplines">
+        <a href="/services/strategy-planning.html">Research</a>
+        <a href="/services/strategy-planning.html">Strategy</a>
+        <a href="/services/marketing-branding.html">Branding</a>
+        <a href="/services/marketing-branding.html">Marketing</a>
+        <a href="/services/sales-acceleration.html">Mandate Sales</a>
+        <a href="/services/sales-acceleration.html">Channel Partners</a>
+        <a href="/services/crm-post-sales.html">CRM</a>
+        <a href="/services/crm-post-sales.html">Handover</a>
+      </nav>
+
+      <div class="footer-cols">
+        <div class="footer-brand">
+          <img src="/assets/img/logo-prop-partner.png" alt="The Prop Partner">
+          <p>Real estate advisory, mandate sales &amp; project lifecycle management. Transforming ideas into successful communities.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/portfolio.html">Portfolio</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/strategy-planning.html">Strategy &amp; Planning</a></li>
+            <li><a href="/services/marketing-branding.html">Marketing &amp; Branding</a></li>
+            <li><a href="/services/sales-acceleration.html">Sales Acceleration</a></li>
+            <li><a href="/services/crm-post-sales.html">CRM &amp; Post-Sales</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="/contact.html">Book a consultation</a></li>
+            <li><a href="https://wa.me/919796964545">WhatsApp</a></li>
+            <li><a href="tel:+919796964545">+91 97969 64545</a></li>
+            <li><a href="mailto:hello@thepropartner.in">hello@thepropartner.in</a></li>
+          </ul>
+          <h4 style="margin-top:22px">For partners</h4>
+          <ul>
+            <li><a href="/contact.html?type=channel-partner">Channel partners</a></li>
+            <li><a href="/contact.html?type=buyer">Project enquiries</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Hyderabad &nbsp;·&nbsp; Bangalore</span>
+        <span>© <span data-year>2026</span> The Prop Partner Pvt. Ltd. &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

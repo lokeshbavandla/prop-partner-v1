@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+  /* Self-contained reveal-on-scroll. Lives in <head> so it can't be broken by
+     any other script. Sets .js (so content is visible if JS is disabled),
+     then reveals .reveal elements as they enter the viewport. */
+  (function (d) {
+    d.documentElement.classList.add('js');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function run() {
+      var els = d.querySelectorAll('.reveal:not(.in)'), vh = window.innerHeight, i;
+      for (i = 0; i < els.length; i++) {
+        var r = els[i].getBoundingClientRect();
+        if (r.top < vh * 0.9 && r.bottom > 0) els[i].classList.add('in');
+      }
+    }
+    function start() {
+      if (reduce) {
+        var all = d.querySelectorAll('.reveal'), i;
+        for (i = 0; i < all.length; i++) all[i].classList.add('in');
+        return;
+      }
+      run();
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(function () { run(); ticking = false; }); }
+      }, { passive: true });
+      window.addEventListener('resize', run, { passive: true });
+      window.addEventListener('load', run);
+    }
+    if (d.readyState !== 'loading') start();
+    else d.addEventListener('DOMContentLoaded', start);
+  })(document);
+  </script>
+  <title>Privacy Policy | The Prop Partner</title>
+  <meta name="description" content="How The Prop Partner collects, uses and protects your personal data, in line with India&#x27;s Digital Personal Data Protection Act, 2023.">
+  <link rel="canonical" href="https://www.thepropartner.in/privacy.html">
+
+  <!-- Open Graph / social (first impression in WhatsApp & pitch emails) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Prop Partner">
+  <meta property="og:title" content="Privacy Policy | The Prop Partner">
+  <meta property="og:description" content="How The Prop Partner collects, uses and protects your personal data, in line with India&#x27;s Digital Personal Data Protection Act, 2023.">
+  <meta property="og:image" content="https://www.thepropartner.in/assets/img/og-default.jpg">
+  <meta property="og:url" content="https://www.thepropartner.in/privacy.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy | The Prop Partner">
+  <meta name="twitter:description" content="How The Prop Partner collects, uses and protects your personal data, in line with India&#x27;s Digital Personal Data Protection Act, 2023.">
+  <meta name="twitter:image" content="https://www.thepropartner.in/assets/img/og-default.jpg">
+  <meta name="theme-color" content="#0E2522">
+
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"The Prop Partner",
+"description":"Real estate advisory, mandate sales and project lifecycle management for developers across Hyderabad and Bangalore.",
+"url":"https://www.thepropartner.in","areaServed":["Hyderabad","Bangalore"],
+"slogan":"One Partner. Every Stage of Project Success.","email":"hello@thepropartner.in","telephone":"+91-97969-64545"}
+</script>
+</head>
+<body data-page="">
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <a href="#main" class="btn btn--primary" style="position:absolute;left:-9999px;top:8px;z-index:100" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to content</a>
+  <header class="site-header">
+    <div class="container container--wide nav">
+      <a href="/" class="brand" aria-label="The Prop Partner — home">
+        <img src="/assets/img/logo-prop-partner.png" alt="The Prop Partner" width="170" height="44">
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a class="nav__link" data-nav="about" href="/about.html">About</a>
+        <span class="has-menu">
+          <a class="nav__link" data-nav="services" href="/services.html">Services</a>
+          <span class="menu" role="menu">
+            <a href="/services/strategy-planning.html"><span class="m-title">Strategy &amp; Planning</span><span class="m-sub">Research · product · pricing</span></a>
+            <a href="/services/marketing-branding.html"><span class="m-title">Marketing &amp; Branding</span><span class="m-sub">Identity · demand generation</span></a>
+            <a href="/services/sales-acceleration.html"><span class="m-title">Sales Acceleration</span><span class="m-sub">Mandate sales · channel partners</span></a>
+            <a href="/services/crm-post-sales.html"><span class="m-title">CRM &amp; Post-Sales</span><span class="m-sub">Customer journey · handover</span></a>
+          </span>
+        </span>
+        <a class="nav__link" data-nav="portfolio" href="/portfolio.html">Portfolio</a>
+        <a class="nav__link" data-nav="insights" href="/insights.html">Insights</a>
+        <a class="nav__link" data-nav="contact" href="/contact.html">Contact</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost" href="/careers.html">Careers</a>
+        <a class="btn btn--primary" href="/contact.html">Book a Consultation</a>
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/about.html">About</a>
+    <details>
+      <summary><a href="/services.html" style="border:0;padding:0">Services</a></summary>
+      <div class="sub">
+        <a href="/services/strategy-planning.html">Strategy &amp; Planning</a>
+        <a href="/services/marketing-branding.html">Marketing &amp; Branding</a>
+        <a href="/services/sales-acceleration.html">Sales Acceleration</a>
+        <a href="/services/crm-post-sales.html">CRM &amp; Post-Sales</a>
+      </div>
+    </details>
+    <a href="/portfolio.html">Portfolio</a>
+    <a href="/insights.html">Insights</a>
+    <a href="/careers.html">Careers</a>
+    <a href="/contact.html">Contact</a>
+    <a class="btn btn--primary" style="margin-top:24px;width:100%" href="/contact.html">Book a Consultation</a>
+  </div>
+
+  <main id="main">
+
+  <section class="page-head">
+    <div class="container">
+      <nav class="crumbs"><a href="/">Home</a><span>/</span>Privacy</nav>
+      <h1 class="mt-3">Privacy Policy</h1>
+      <p class="muted mt-2">Last updated: <span data-year>2026</span>. <em>Template — review with legal counsel before launch.</em></p>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container prose">
+      <p>The Prop Partner ("we", "us") respects your privacy and is committed to protecting your personal data in accordance with India's Digital Personal Data Protection Act, 2023 (DPDP Act).</p>
+
+      <h2>What we collect</h2>
+      <p>When you submit an enquiry form, we collect the details you provide — such as your name, company, role, phone number, email, city and information about your project. We may also collect basic, non-identifying analytics about how the site is used.</p>
+
+      <h2>Why we collect it</h2>
+      <ul>
+        <li>To respond to your enquiry and arrange a consultation.</li>
+        <li>To understand your project and prepare relevant proposals.</li>
+        <li>To improve our website and services.</li>
+      </ul>
+      <p>We process this data on the basis of your consent, which you provide when you submit a form.</p>
+
+      <h2>How we store and share it</h2>
+      <p>Your data is stored securely and accessed only by team members who need it to respond to you. We do not sell your data. We may share it with service providers (for example, email or CRM tools) strictly to operate our business, under appropriate safeguards.</p>
+
+      <h2>Your rights</h2>
+      <p>You may request access to, correction of, or deletion of your personal data, and you may withdraw consent at any time, by writing to <a href="mailto:hello@thepropartner.in">hello@thepropartner.in</a>.</p>
+
+      <h2>Retention</h2>
+      <p>We retain enquiry data only as long as necessary to respond to and serve your request, or as required by law.</p>
+
+      <h2>Contact</h2>
+      <p>For any privacy question, contact us at <a href="mailto:hello@thepropartner.in">hello@thepropartner.in</a>.</p>
+    </div>
+  </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <p class="footer-motif">One Partner.<br><span class="accent">Every stage</span> of project success.</p>
+
+      <nav class="footer-disc" aria-label="Disciplines">
+        <a href="/services/strategy-planning.html">Research</a>
+        <a href="/services/strategy-planning.html">Strategy</a>
+        <a href="/services/marketing-branding.html">Branding</a>
+        <a href="/services/marketing-branding.html">Marketing</a>
+        <a href="/services/sales-acceleration.html">Mandate Sales</a>
+        <a href="/services/sales-acceleration.html">Channel Partners</a>
+        <a href="/services/crm-post-sales.html">CRM</a>
+        <a href="/services/crm-post-sales.html">Handover</a>
+      </nav>
+
+      <div class="footer-cols">
+        <div class="footer-brand">
+          <img src="/assets/img/logo-prop-partner.png" alt="The Prop Partner">
+          <p>Real estate advisory, mandate sales &amp; project lifecycle management. Transforming ideas into successful communities.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/portfolio.html">Portfolio</a></li>
+            <li><a href="/careers.html">Careers</a></li>
+            <li><a href="/insights.html">Insights</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/services/strategy-planning.html">Strategy &amp; Planning</a></li>
+            <li><a href="/services/marketing-branding.html">Marketing &amp; Branding</a></li>
+            <li><a href="/services/sales-acceleration.html">Sales Acceleration</a></li>
+            <li><a href="/services/crm-post-sales.html">CRM &amp; Post-Sales</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="/contact.html">Book a consultation</a></li>
+            <li><a href="https://wa.me/919796964545">WhatsApp</a></li>
+            <li><a href="tel:+919796964545">+91 97969 64545</a></li>
+            <li><a href="mailto:hello@thepropartner.in">hello@thepropartner.in</a></li>
+          </ul>
+          <h4 style="margin-top:22px">For partners</h4>
+          <ul>
+            <li><a href="/contact.html?type=channel-partner">Channel partners</a></li>
+            <li><a href="/contact.html?type=buyer">Project enquiries</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Hyderabad &nbsp;·&nbsp; Bangalore</span>
+        <span>© <span data-year>2026</span> The Prop Partner Pvt. Ltd. &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+THE PROP PARTNER — DEPLOYMENT
+=============================
+
+WHAT THIS IS
+  A ready-to-upload website: static HTML/CSS/JS + a small PHP form handler.
+  Design: editorial, warm off-white + teal, Newsreader (serif) + Inter (sans).
+  Real project renders are already placed (hero, portfolio cards, amenities gallery).
+
+REQUIREMENT
+  PHP-capable hosting (shared/cPanel, VPS, or any host running PHP 7.4+).
+  Pages are static; the "Book a Consultation" form posts to /api/consult.php,
+  which needs PHP. A pure-static host will serve pages but the form won't submit.
+
+DEPLOY (cPanel / shared hosting)
+  1. Upload the ENTIRE contents of this folder into your web root (public_html),
+     keeping the structure (assets/, api/, services/, leads/).
+  2. Make the "leads" folder writable (chmod 775). Enquiries are logged to
+     leads/leads.jsonl as a safety net even if email fails.
+  3. In api/consult.php set the real recipient addresses at the top:
+     TO_DEVELOPER, TO_PARTNERS, TO_BUYERS, FROM_ADDRESS.
+  4. Visit your domain.
+
+BEFORE GOING LIVE — still to fill in (real data only; not invented)
+  - Founder real name (shown as "Founder name" on index.html + about.html)
+    and, if available, a real founder photo (replace assets/img/founder-1.jpg).
+  - Founder credentials on about.html: years in real estate and Rs Cr closed
+    (currently shown as "[X]+" and "Rs [X] Cr").
+  - Legal entity name + RERA registration number (footer — RERA line removed
+    until a number is available).
+  - Optional: an attributed developer testimonial.
+  - Confirm the domain in OG/canonical tags (currently www.thepropartner.in).
+  - Phone/WhatsApp already set to +91 97969 64545; confirm the email address.
+
+EDITING CONTENT LATER
+  Source lives in the /site folder: edit pages/ or partials/, then run:
+     python3 build.py
+  This regenerates the static .html. Re-copy to your host (or rebuild this dist).
+  Project photo source files are in site/assets/img/photos/ (large originals);
+  web-optimised copies already live in assets/img/ — re-optimise with:
+     sips -s format jpeg -Z 1400 -s formatOptions 72 "<source>" --out "<dest>"
+
+NOTES
+  - .htaccess provides 404 handling, clean URLs, caching and security headers (Apache).
+  - This bundle excludes the large source renders in site/assets/img/photos/
+    (only the optimised images the site actually uses are included).

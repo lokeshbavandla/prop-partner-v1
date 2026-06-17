@@ -1,150 +1,111 @@
-/* The Prop Partner — homepage interactions
-   Native scrolling + restrained scroll reveals (GSAP/ScrollTrigger).
-   Everything degrades gracefully without JS or with reduced motion. */
-
+/* The Prop Partner — interactions. Restrained: progress, reveal, nav, FAQ, lifecycle, count-up. */
 (function () {
   "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const doc = document.documentElement;
-
-  /* ---------- Footer year ---------- */
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
-  /* ---------- Sticky header state ---------- */
-  const header = document.getElementById("siteHeader");
-  const onScroll = () => {
-    if (window.scrollY > 8) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
-  };
-  onScroll();
+  /* ---- sticky header shadow ---- */
+  var header = document.querySelector(".site-header");
+  var progress = document.querySelector(".scroll-progress");
+  function onScroll() {
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if (header) header.classList.toggle("is-stuck", y > 8);
+    if (progress) {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.transform = "scaleX(" + (h > 0 ? y / h : 0) + ")";
+    }
+  }
   window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  /* ---------- Mobile nav ---------- */
-  const toggle = document.getElementById("navToggle");
-  const mobileNav = document.getElementById("mobileNav");
-  if (toggle && mobileNav) {
-    const closeNav = () => {
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open menu");
-      mobileNav.hidden = true;
-    };
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") === "true";
-      if (open) {
-        closeNav();
-      } else {
-        toggle.setAttribute("aria-expanded", "true");
-        toggle.setAttribute("aria-label", "Close menu");
-        mobileNav.hidden = false;
-      }
+  /* ---- mobile nav ---- */
+  var toggle = document.querySelector(".nav__toggle");
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      document.body.classList.toggle("menu-open");
+      var open = document.body.classList.contains("menu-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    mobileNav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
-        closeNav();
-        toggle.focus();
-      }
+    document.querySelectorAll(".mobile-nav a").forEach(function (a) {
+      a.addEventListener("click", function () { document.body.classList.remove("menu-open"); });
     });
   }
 
-  /* ---------- GSAP reveals (native scrolling, no scroll hijack) ----------
-     We deliberately use the browser's native scroll. Smooth-scroll libraries
-     (Lenis et al.) intercept the wheel and, tuned wrong, feel laggy and rough.
-     Native scroll is the most natural feel; ScrollTrigger rides on top of it. */
-  const hasGsap = typeof window.gsap !== "undefined";
+  /* ---- reveal on scroll is handled by the self-contained script in <head>
+     so it can never be blocked by an error elsewhere in this file. ---- */
 
-  if (hasGsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
+  /* ---- lifecycle spine light-up ---- */
+  var spine = document.querySelector(".spine");
+  if (spine) {
+    if (reduce) { spine.classList.add("lit"); }
+    else {
+      var so = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) { if (e.isIntersecting) { spine.classList.add("lit"); so.disconnect(); } });
+      }, { threshold: 0.5 });
+      so.observe(spine);
+    }
   }
 
-  /* ---------- Reveal-on-scroll (enhances an already-visible default) ---------- */
-  if (!prefersReduced && hasGsap && window.ScrollTrigger) {
-    doc.classList.add("js-anim"); // only now do we hide-then-reveal
+  /* ---- orbit arc draw ---- */
+  var arc = document.querySelector(".orbit .arc");
+  if (arc) {
+    var len = arc.getTotalLength ? arc.getTotalLength() : 0;
+    if (len && !reduce) {
+      arc.style.strokeDasharray = len;
+      arc.style.strokeDashoffset = len;
+      var ao = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) {
+          if (e.isIntersecting) {
+            arc.style.transition = "stroke-dashoffset 1.6s cubic-bezier(.22,1,.36,1)";
+            arc.style.strokeDashoffset = "0";
+            ao.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      ao.observe(arc);
+    }
+  }
 
-    const items = Array.from(document.querySelectorAll("[data-reveal]"));
-    // Group reveals by their nearest section so each section staggers its own children.
-    const groups = new Map();
-    items.forEach((el) => {
-      const section = el.closest("section, footer") || document.body;
-      if (!groups.has(section)) groups.set(section, []);
-      groups.get(section).push(el);
+  /* ---- FAQ accordion ---- */
+  document.querySelectorAll(".faq__item").forEach(function (item) {
+    var q = item.querySelector(".faq__q");
+    var a = item.querySelector(".faq__a");
+    if (!q || !a) return;
+    q.setAttribute("aria-expanded", "false");
+    q.addEventListener("click", function () {
+      var open = item.classList.toggle("open");
+      q.setAttribute("aria-expanded", open ? "true" : "false");
+      a.style.maxHeight = open ? a.scrollHeight + "px" : "0px";
     });
+  });
 
-    groups.forEach((els) => {
-      gsap.to(els, {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
-        ease: "power3.out",
-        stagger: 0.08,
-        scrollTrigger: {
-          trigger: els[0],
-          start: "top 86%",
-          once: true,
-        },
-      });
-    });
-
-    // Safety net: if anything is still hidden after load (offscreen edge cases), reveal it.
-    window.addEventListener("load", () => ScrollTrigger.refresh());
+  /* ---- count-up for [data-count] ---- */
+  function countUp(el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    var dec = (target % 1 !== 0) ? 1 : 0;
+    var dur = 1300, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(dec).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target.toLocaleString("en-IN");
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll("[data-count]");
+  if (counters.length) {
+    if (reduce || !("IntersectionObserver" in window)) {
+      counters.forEach(function (c) { c.textContent = parseFloat(c.getAttribute("data-count")).toLocaleString("en-IN"); });
+    } else {
+      var co = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) { if (e.isIntersecting) { countUp(e.target); co.unobserve(e.target); } });
+      }, { threshold: 0.6 });
+      counters.forEach(function (c) { co.observe(c); });
+    }
   }
 
-  /* ---------- In-page anchor links ----------
-     Native smooth scroll handles the motion (html { scroll-behavior: smooth }),
-     and scroll-padding-top offsets the sticky header. No JS scroll needed. */
-
-  /* ---------- Consultation form (client-side validation + thank-you state) ---------- */
-  const form = document.getElementById("consultForm");
-  const status = document.getElementById("formStatus");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      // Honeypot: if filled, silently pretend success (bot).
-      const hp = form.querySelector('input[name="company_url"]');
-      if (hp && hp.value) { showThanks(); return; }
-
-      const required = ["name", "company", "phone"];
-      let firstInvalid = null;
-      required.forEach((n) => {
-        const f = form.elements[n];
-        const ok = f && f.value.trim().length > 0;
-        if (f) f.classList.toggle("invalid", !ok);
-        if (!ok && !firstInvalid) firstInvalid = f;
-      });
-
-      if (firstInvalid) {
-        status.textContent = "Please fill in your name, company, and a number we can reach you on.";
-        status.className = "form-status err";
-        firstInvalid.focus();
-        return;
-      }
-
-      // NOTE: no backend yet. In production this POSTs to a monitored inbox/CRM,
-      // fires the /thank-you conversion event, and sends an auto-acknowledgement.
-      showThanks();
-    });
-
-    form.addEventListener("input", (e) => {
-      if (e.target.classList && e.target.classList.contains("invalid")) {
-        e.target.classList.remove("invalid");
-      }
-    });
-  }
-
-  function showThanks() {
-    const name = (form.elements["name"] && form.elements["name"].value.trim().split(" ")[0]) || "there";
-    form.classList.add("sent");
-    form.innerHTML =
-      '<svg class="burst-mark lg" aria-hidden="true" style="margin:0 auto 1rem"><use href="#burst"/></svg>' +
-      '<h3 style="color:var(--on-dark);font-size:1.6rem;margin-bottom:0.6rem">Thanks, ' + escapeHtml(name) + ".</h3>" +
-      '<p style="color:var(--on-dark-2);max-width:34ch">We\'ve got your details and will respond within one business day to set up the conversation.</p>';
-    form.setAttribute("aria-live", "polite");
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  }
+  /* ---- footer year ---- */
+  var yr = document.querySelector("[data-year]");
+  if (yr) yr.textContent = new Date().getFullYear();
 })();
